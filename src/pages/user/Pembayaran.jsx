@@ -37,7 +37,18 @@ export default function Pembayaran() {
   }, []);
 
   useEffect(() => {
-    localStorage.setItem("bookingDetail", JSON.stringify(bookingDetail));
+    const handlePaymentCompletion = (event) => {
+      const successUrl = "https://aviatick-staging.vercel.app/success";
+      if (event.origin === new URL(successUrl).origin && event.data.includes("transaction_status=settlement")) {
+        localStorage.setItem("bookingDetail", JSON.stringify(bookingDetail));
+      }
+    };
+
+    window.addEventListener("message", handlePaymentCompletion);
+
+    return () => {
+      window.removeEventListener("message", handlePaymentCompletion);
+    };
   }, [bookingDetail]);
 
   useEffect(() => {
