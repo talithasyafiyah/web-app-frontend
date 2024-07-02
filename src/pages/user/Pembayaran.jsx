@@ -37,6 +37,10 @@ export default function Pembayaran() {
   }, []);
 
   useEffect(() => {
+    localStorage.setItem("bookingDetail", JSON.stringify(bookingDetail));
+  }, [bookingDetail]);
+
+  useEffect(() => {
     if (booking?.selectedReturn !== null) return settripType("roundtrip");
     if (booking?.selectedReturn === null) return settripType("singletrip");
   }, []);
