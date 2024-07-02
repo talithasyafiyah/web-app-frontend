@@ -1,4 +1,4 @@
-import { useAsyncError, useNavigate } from "react-router-dom";
+import { useAsyncError, useLocation, useNavigate } from "react-router-dom";
 import Footer from "../../components/navigations/Footer";
 import Navbar from "../../components/navigations/Navbar";
 import * as React from "react";
@@ -10,6 +10,7 @@ import BackButtonMobile from "../../components/navigations/BackButtonMobile";
 
 export default function Pembayaran() {
   const navigate = useNavigate();
+  const location = useLocation();
   const [tripType, settripType] = useState("");
   const booking = useSelector((state) => state?.bookingFlight?.bookings);
   const airplane = useSelector(
@@ -37,21 +38,15 @@ export default function Pembayaran() {
   }, []);
 
   useEffect(() => {
-    const handlePaymentCompletion = (event) => {
-      const successUrl = "https://aviatick-staging.vercel.app/success";
-      if (event.origin === new URL(successUrl).origin && event.data.includes("transaction_status=settlement")) {
-        const updatedBookingDetail = { ...bookingDetail, status: "PAID" };
-        localStorage.setItem("bookingDetail", JSON.stringify(updatedBookingDetail));
-        toast.success("Payment completed successfully!");
+    const handlePaymentCompletion = () => {
+      const params = new URLSearchParams(location.search);
+      if (params.get("transaction_status") === "settlement") {
+        localStorage.setItem("bookingDetail", JSON.stringify(bookingDetail));
       }
     };
 
-    window.addEventListener("message", handlePaymentCompletion);
-
-    return () => {
-      window.removeEventListener("message", handlePaymentCompletion);
-    };
-  }, [bookingDetail]);
+    handlePaymentCompletion();
+  }, [location.search, bookingDetail]);
 
   useEffect(() => {
     if (booking?.selectedReturn !== null) return settripType("roundtrip");
