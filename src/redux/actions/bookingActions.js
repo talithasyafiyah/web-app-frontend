@@ -103,6 +103,16 @@ export const getBookingTicketCompleted =
       );
       dispatch(setDataPayment(response.data));
 
+      const response1 = await axios.get(
+        `https://aviatick-backend-git-development-aviaticks-projects.vercel.app/api/v1/bookings/booking-history/${bookingId}`,
+        {
+          headers: {
+            accept: "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      localStorage.setItem("bookingDetail", JSON.stringify(response1.data.data));
       navigate("/pembayaran");
     } catch (error) {
       setIsLoading(false);

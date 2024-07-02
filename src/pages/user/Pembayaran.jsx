@@ -3,15 +3,13 @@ import Footer from "../../components/navigations/Footer";
 import Navbar from "../../components/navigations/Navbar";
 import * as React from "react";
 import { useSelector } from "react-redux";
-import { useState, useContext } from "react";
+import { useState } from "react";
 import { useEffect } from "react";
 import { toast } from "react-toastify";
 import BackButtonMobile from "../../components/navigations/BackButtonMobile";
-import { BookingContext } from "./BookingContext.jsx";
 
 export default function Pembayaran() {
   const navigate = useNavigate();
-  const { setBookingDetail } = useContext(BookingContext);
   const [tripType, settripType] = useState("");
   const booking = useSelector((state) => state?.bookingFlight?.bookings);
   const airplane = useSelector(
@@ -36,8 +34,7 @@ export default function Pembayaran() {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    setBookingDetail(bookingDetail);
-  }, [bookingDetail]);
+  }, []);
 
   useEffect(() => {
     if (booking?.selectedReturn !== null) return settripType("roundtrip");

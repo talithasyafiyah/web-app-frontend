@@ -5,11 +5,10 @@ import { Navigate, useNavigate } from "react-router-dom";
 import BackToTopButton from "../components/navigations/BackToTop";
 import CetakTiket from "../components/buttons/CetakTiket";
 import { useSelector } from "react-redux";
-import { BookingContext } from "./user/BookingContext.jsx";
 
 function PaymentSuccess() {
   const navigate = useNavigate();
-  const { bookingDetail } = useContext(BookingContext); 
+  const bookingDetail = JSON.parse(localStorage.getItem("bookingDetail"));
 
   return (
     <div>
