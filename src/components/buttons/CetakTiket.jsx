@@ -35,7 +35,7 @@ const CetakTiket = ({ bookingDetail }) => {
             : "bg-primary hover:bg-darkprimary"
         }`}
       >
-        {bookingDetail?.status === "UNPAID" || bookingDetail?.status === "UNPAID" ? "Lanjut Bayar" : "Cetak Tiket"}
+        {bookingDetail?.status === "UNPAID" ? "Lanjut Bayar" : "Cetak Tiket"}
       </button>
       <div style={{ display: "none" }}>
         <TicketContent

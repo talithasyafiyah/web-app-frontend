@@ -23,7 +23,7 @@ function PaymentSuccess() {
             </span>
           </p>
           <div className="flex flex-col items-center gap-3 justify-center">
-            {bookingDetail?.status !== "CANCELED" && (
+            {bookingDetail?.status !== "PAID" && (
               <CetakTiket
                 bookingDetail={bookingDetail}
               />
