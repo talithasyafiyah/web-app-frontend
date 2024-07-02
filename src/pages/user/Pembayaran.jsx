@@ -40,7 +40,9 @@ export default function Pembayaran() {
     const handlePaymentCompletion = (event) => {
       const successUrl = "https://aviatick-staging.vercel.app/success";
       if (event.origin === new URL(successUrl).origin && event.data.includes("transaction_status=settlement")) {
-        localStorage.setItem("bookingDetail", JSON.stringify(bookingDetail));
+        const updatedBookingDetail = { ...bookingDetail, status: "PAID" };
+        localStorage.setItem("bookingDetail", JSON.stringify(updatedBookingDetail));
+        toast.success("Payment completed successfully!");
       }
     };
 
