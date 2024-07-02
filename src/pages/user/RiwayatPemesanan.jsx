@@ -586,7 +586,6 @@ export default function RiwayatPemesanan() {
                       </div>
                       {bookingDetail?.status !== "CANCELED" && (
                         <CetakTiket
-                          flightDetail={selectedFlight}
                           bookingDetail={bookingDetail}
                         />
                       )}
@@ -854,7 +853,6 @@ export default function RiwayatPemesanan() {
 
                   {bookingDetail?.status !== "CANCELED" && (
                     <CetakTiket
-                      flightDetail={selectedFlight}
                       bookingDetail={bookingDetail}
                     />
                   )}

@@ -9,11 +9,8 @@ import { BookingContext } from "./user/BookingContext.jsx";
 
 function PaymentSuccess() {
   const navigate = useNavigate();
-  const bookingDetail = useSelector((state) => state?.bookingFlight?.historySuccess);
+  const { bookingDetail } = useContext(BookingContext); 
 
-  useEffect(() => {
-    console.log("bookingDetail", bookingDetail);
-  }, [bookingDetail]);
   return (
     <div>
       <Navbar transparent={false} />
@@ -29,7 +26,6 @@ function PaymentSuccess() {
           <div className="flex flex-col items-center gap-3 justify-center">
             {bookingDetail?.status !== "CANCELED" && (
               <CetakTiket
-                flightDetail={bookingDetail}
                 bookingDetail={bookingDetail}
               />
             )}
