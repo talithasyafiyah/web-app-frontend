@@ -1,0 +1,73 @@
+.react-datepicker {
+  font-family: "Poppins", sans-serif; /* Mengubah font */
+  padding: 16px;
+  background-color: white;
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.react-datepicker__header {
+  background-color: #f0f0f0;
+  border-bottom: 1px solid #ccc;
+}
+
+.react-datepicker__current-month,
+.react-datepicker-time__header,
+.react-datepicker-year-header {
+  font-weight: bold;
+}
+
+.react-datepicker__day-name,
+.react-datepicker__day,
+.react-datepicker__time-name {
+  width: 1.9rem;
+  line-height: 1.9rem;
+  margin: 0.166rem;
+  color: #666;
+  font-weight: normal;
+}
+
+.react-datepicker__day--selected,
+.react-datepicker__day--in-range,
+.react-datepicker__day--in-selecting-range {
+  background-color: #4a90e2;
+  color: white;
+}
+
+.react-datepicker__day--disabled {
+  color: #ccc;
+}
+
+.react-datepicker__day:hover,
+.react-datepicker__day--keyboard-selected {
+  background-color: #f0f0f0;
+  cursor: pointer;
+}
+
+/* Mengatur tampilan untuk navigasi bulanan */
+.react-datepicker__navigation {
+  top: 10px;
+  width: 34px;
+  height: 34px;
+  background: none;
+  line-height: 34px;
+  border: none;
+  text-align: center;
+  cursor: pointer;
+}
+
+.react-datepicker__navigation--previous {
+  left: 10px;
+}
+
+.react-datepicker__navigation--next {
+  right: 10px;
+}
+
+/* Mengatur tampilan untuk input */
+.react-datepicker__input-container input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
